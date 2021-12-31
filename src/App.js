@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import ToDoList from "./ToDoList";
+import Button from '@mui/material/Button';
+import { TextField } from "@mui/material";
+import { InputLabel } from "@mui/material";
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
@@ -41,10 +44,10 @@ function App() {
   return (
     <>
     <ToDoList todos={todos} toggleToDo={toggleToDo}/>
-    <input ref={todoNameRef} type="text" />
-    <button onClick={handleAddToDo}>Add ToDo</button>
-    <button onClick={handleClearToDos}>Clear Completed</button>
-    <div>{todos.filter(todo => !todo.complete).length} left to do</div>
+    <TextField inputRef={todoNameRef}></TextField>
+    <Button variant="contained" onClick={handleAddToDo}>Add To Do</Button>
+    <Button variant="outlined" onClick={handleClearToDos}>Clear Completed</Button>
+    <InputLabel>{todos.filter(todo => !todo.complete).length} left to do</InputLabel>
     </>
   )
 }
